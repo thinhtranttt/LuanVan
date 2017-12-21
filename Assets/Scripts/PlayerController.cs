@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public Transform Item;
- 
-    public float range = 3f;
-    private string weaponTag = "Weapon";
+    public Transform bullets;
+    public Transform sun;
+    public Transform pin;
 
-    private void OnDrawGizmosSelected()
+    public float range;
+    private string weaponTag = "Weapon";
+    private bool turnOnPin = true;
+
+    private void OnDrawGizmosSelected() // khoang cach nhat item cua nhan vat
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
@@ -21,14 +25,18 @@ public class PlayerController : MonoBehaviour {
     {
         
         InvokeRepeating("UpdateTheItem",0f,0.5f);
-        //Gun = Gun.GetChild(0).GetComponent<Transform>();
+        
     }
 
-    void UpdateTheItem()
+    void UpdateTheItem() // set item khi nv lai gan voi khoang cach range
     {
         GameObject[] items = GameObject.FindGameObjectsWithTag(weaponTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestWeapon = null;
+
+        GameObject[] tmpBullets = GameObject.FindGameObjectsWithTag("Bullets");
+        float shortestDistanceBullets = Mathf.Infinity;
+        GameObject nearestBullets = null;
 
         foreach (GameObject item in items)
         {
@@ -40,11 +48,20 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        foreach (GameObject bullet in tmpBullets)
+        {
+            float distanceToItem = Vector3.Distance(transform.position, bullet.transform.position);
+            if (distanceToItem < shortestDistanceBullets)
+            {
+                shortestDistanceBullets = distanceToItem;
+                nearestBullets = bullet;
+            }
+        }
+
         if (nearestWeapon != null && shortestDistance <= range)
         {
             Item = nearestWeapon.transform;
-            //thay doi sung tai day
-
+           
 
         }
         else
@@ -52,7 +69,31 @@ public class PlayerController : MonoBehaviour {
             Item = null;
         }
 
+        if (nearestBullets != null && shortestDistanceBullets <= range)
+        {
+            bullets = nearestBullets.transform;
 
+
+        }
+        else
+        {
+            bullets = null;
+        }
+
+
+    }
+
+    public void TurnOnPin()
+    {
+        
+        if (pin.transform.gameObject.active)
+        {
+            pin.transform.gameObject.SetActive(false);
+        }
+        else
+        {
+            pin.transform.gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -60,6 +101,18 @@ public class PlayerController : MonoBehaviour {
     {
         if (Item != null)
             return;
+        if(sun.rotation.y <= -60 || sun.position.y >= 100)
+        {
+            pin.transform.gameObject.SetActive(true);
+        }
+
+        if(sun.rotation.y <= -60 || sun.position.y >= 100)
+        {
+            RenderSettings.fog = false;
+        }else
+        {
+            RenderSettings.fog = true;
+        }
     }
 
 }

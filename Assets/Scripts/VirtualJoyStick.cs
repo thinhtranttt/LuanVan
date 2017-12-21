@@ -12,7 +12,9 @@ public class VirtualJoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public bool move = false;
     public bool shoot = false;
 
-	void Start()	
+    public AudioClip audioWalk;
+    public AudioSource audioSource;
+    void Start()	
 	{
 		bgImg = transform.GetComponent<Image> ();
 		jstImg = transform.GetChild (0).GetComponent<Image> ();
@@ -23,7 +25,9 @@ public class VirtualJoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	{
 		OnDrag (ped);
         shoot = true;
-	}
+        audioSource.clip = audioWalk;
+        audioSource.Play();
+    }
 
 	public virtual void OnPointerUp(PointerEventData ped)
 	{
@@ -31,6 +35,7 @@ public class VirtualJoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 		jstImg.rectTransform.anchoredPosition = Vector3.zero;
         move = false;
         shoot = false;
+        audioSource.Stop();
 	}
 
 	public virtual void OnDrag(PointerEventData ped)

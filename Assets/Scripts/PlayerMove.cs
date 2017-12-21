@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour {
 	public float gravity = 20.0F;
 	public VirtualJoyStick joystick;
     public AudioClip audioJump;
+    
     public AudioSource audioSource;
 
     private Animator anim;
@@ -19,7 +20,9 @@ public class PlayerMove : MonoBehaviour {
     public void Jump()
     {
         jump = true;
-        anim.SetBool("Jump", true);
+        anim.SetBool(Constant.JUMP, true);
+        audioSource.clip = audioJump;
+        audioSource.Play();
     }
 
     private void Start()
@@ -31,8 +34,10 @@ public class PlayerMove : MonoBehaviour {
     void Update() {
         if (joystick.move == true)
         {
+            
             if (controller.isGrounded)
             {
+                
                 moveDirection = new Vector3(joystick.Horizontal(), 0, joystick.Vertical());
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;              
@@ -41,23 +46,22 @@ public class PlayerMove : MonoBehaviour {
                 {
                     moveDirection.y = jumpSpeed;
                     jump = false;
-                    audioSource.clip = audioJump;
-                    audioSource.Play();
-
                 }
                 else
                 {
-                    anim.SetBool("Jump", false);
+                    anim.SetBool(Constant.JUMP, false);
                 }
-                anim.SetBool("Walk", true);
+                anim.SetBool(Constant.WALK, true);
+                
             }
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection * Time.deltaTime);
-
+            
         }
         else
         {
-            anim.SetBool("Walk", false);
+            anim.SetBool(Constant.WALK, false);
+            //audioSource.Stop();
             if (controller.isGrounded)
             {
                 moveDirection = new Vector3(joystick.Horizontal(), 0, joystick.Vertical());
@@ -65,12 +69,11 @@ public class PlayerMove : MonoBehaviour {
                 {
                     moveDirection.y = jumpSpeed;
                     jump = false;
-                    audioSource.clip = audioJump;
-                    audioSource.Play();
+                   
                 }
                 else
                 {
-                    anim.SetBool("Jump", false);
+                    anim.SetBool(Constant.JUMP, false);
                 }
 
 

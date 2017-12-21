@@ -9,24 +9,13 @@ public class Item : MonoBehaviour {
     public Transform Gun;
     public Transform items;
 
-    public int maxBullet;
-    public int currentBullet;
-    public int dame;
-    public float range;
-    private string playerTag = "Player";
     private Button pick;
 
-    public int GetDame()
-    {
-        return dame;
-    }
-
-
-    public void PickUp()
+    public void PickUp() // nhat sung
     {
         for (int i = 0; i < Gun.GetChildCount(); i++)
         {
-            if (checkEmpty(Gun))
+            if (checkEmpty(Gun)) // empty
             {
                 Gun.GetChild(i).transform.gameObject.SetActive(false);
                 if (transform.name.Equals(Gun.GetChild(i).name))
@@ -39,17 +28,25 @@ public class Item : MonoBehaviour {
             {
                 if (Gun.GetChild(i).gameObject.active)
                 {
+                    
                     for (int j = 0; j < items.GetChildCount(); j++)
                     {
                         items.GetChild(j).transform.gameObject.SetActive(false);
-                        if (items.GetChild(j).name.Equals(Gun.GetChild(i).name))
+                        if (items.GetChild(j).name.Equals(Gun.GetChild(i).name)) // quang sung
                         {
                             items.GetChild(j).gameObject.SetActive(true);
+                            var tmpItem = items.GetChild(j).gameObject.GetComponent<GunInfo>();
+                            var tmpGun = Gun.GetChild(i).gameObject.GetComponent<GunInfo>();
+
+                            tmpItem.maxBullet = tmpGun.maxBullet;
+                            tmpItem.curBullet = tmpGun.curBullet;
+
+                            
                         }
                         Gun.GetChild(j).transform.gameObject.SetActive(false);
-                        if (transform.name.Equals(Gun.GetChild(j).name))
+                        if (transform.name.Equals(Gun.GetChild(j).name)) // nhat sung
                         {
-                            Gun.GetChild(j).gameObject.SetActive(true);
+                            Gun.GetChild(j).gameObject.SetActive(true);  
                         }
                     }
                     return;
@@ -60,7 +57,7 @@ public class Item : MonoBehaviour {
         
     }
 
-    private bool checkEmpty(Transform x)
+    private bool checkEmpty(Transform x) // kiem tra co dang cam sung hay khong
     {
         for(int i=0; i<x.GetChildCount(); i++)
         {
@@ -73,7 +70,7 @@ public class Item : MonoBehaviour {
     }
 
 
-    void UpdatePlayer()
+    void UpdatePlayer() // kiem tra khoang cach toi item 
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -92,10 +89,5 @@ public class Item : MonoBehaviour {
         
         pick = transform.GetChild(0).GetChild(0).GetComponent<Button>();
         InvokeRepeating("UpdatePlayer", 0f, 0.5f);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        
     }
 }
