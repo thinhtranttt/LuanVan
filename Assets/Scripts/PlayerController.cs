@@ -101,10 +101,10 @@ public class PlayerController : MonoBehaviour {
     {
         if (Item != null)
             return;
-        if(sun.rotation.y <= -60 || sun.position.y >= 100)
-        {
-            pin.transform.gameObject.SetActive(true);
-        }
+        //if(sun.rotation.y <= -60 || sun.position.y >= 100)
+        //{
+        //    pin.transform.gameObject.SetActive(true);
+        //}
 
         if(sun.rotation.y <= -60 || sun.position.y >= 100)
         {

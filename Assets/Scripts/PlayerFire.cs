@@ -8,6 +8,7 @@ public class PlayerFire : MonoBehaviour
     public Transform nongNham;
     public GameObject tracer;
     public GameObject headGun;
+    public GameObject shotHole;
     public VirtualJoyStick move;
 
     public Transform gunDame;
@@ -155,6 +156,7 @@ public class PlayerFire : MonoBehaviour
         {
             if (hit.transform.tag.Equals("Zombie"))
             {
+                Instantiate(shotHole, hit.transform.position, hit.transform.rotation);
                 if (GetCurGun() != null)
                 {
                     if (Vector3.Distance(transform.position, hit.transform.position) <= GetCurGun().GetComponent<GunInfo>().range)
@@ -163,10 +165,15 @@ public class PlayerFire : MonoBehaviour
                     }
                     else
                     {
-                        hit.transform.gameObject.GetComponent<ZombieController>().GetHit(dame/2);
+                        hit.transform.gameObject.GetComponent<ZombieController>().GetHit(dame / 2);
                     }
                 }
             }
+            else
+            {
+                Instantiate(shotHole, hit.transform.position, Quaternion.identity);
+            }
+
         }
         if (move.move == true)
         {
@@ -190,8 +197,8 @@ public class PlayerFire : MonoBehaviour
 
     void InsTracer() // particle dan ban
     {
-        GameObject trc = Instantiate(tracer, headGun.transform.position, transform.rotation);
-        Destroy(trc, 0.2f);
+        GameObject trc = Instantiate(tracer, headGun.transform.position, Quaternion.identity);
+        Destroy(trc, 0.1f);
     }
 
 
