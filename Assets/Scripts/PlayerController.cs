@@ -3,29 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
-    public Transform Item;
-    public Transform bullets;
-    public Transform sun;
+    private Transform Item;
+    private Transform bullets;
+    private Transform sun;
     public Transform pin;
 
+    public float health;
     public float range;
     private string weaponTag = "Weapon";
     private bool turnOnPin = true;
+    private Animator anim;
 
-    private void OnDrawGizmosSelected() // khoang cach nhat item cua nhan vat
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
+    public Text txtLose;
+
+    private Transform headCam;
+    private bool isRotate;
+
 
     // Use this for initialization
     void Start()
     {
-        
-        InvokeRepeating("UpdateTheItem",0f,0.5f);
-        
+        sun = GameObject.FindGameObjectWithTag("Sun").transform;
+        InvokeRepeating("UpdateTheItem", 0f, 0.5f);
+        anim = GetComponent<Animator>();
+        headCam = GameObject.FindGameObjectWithTag("HeadCam").transform;
+
     }
 
     void UpdateTheItem() // set item khi nv lai gan voi khoang cach range
@@ -61,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         if (nearestWeapon != null && shortestDistance <= range)
         {
             Item = nearestWeapon.transform;
-           
+
 
         }
         else
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 
     public void TurnOnPin()
     {
-        
+
         if (pin.transform.gameObject.active)
         {
             pin.transform.gameObject.SetActive(false);
@@ -101,18 +106,39 @@ public class PlayerController : MonoBehaviour {
     {
         if (Item != null)
             return;
-        //if(sun.rotation.y <= -60 || sun.position.y >= 100)
-        //{
-        //    pin.transform.gameObject.SetActive(true);
-        //}
 
-        if(sun.rotation.y <= -60 || sun.position.y >= 100)
+        //Debug.Log(headCam.eulerAngles.y + " " + transform.eulerAngles.y);
+        if (Input.GetAxis("Rotate") != 0 && !isRotate)
         {
-            RenderSettings.fog = false;
-        }else
+            Debug.Log(Input.GetAxis("Rotate") + " " + isRotate);
+            var tmp = headCam.eulerAngles;
+
+            transform.eulerAngles = new Vector3(tmp.x, tmp.y, 0);
+
+            Debug.Log(isRotate);
+        }
+        else
         {
-            RenderSettings.fog = true;
+            isRotate = false;
+        }
+
+    }
+
+    public void GetHit(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Dead();
         }
     }
 
+    private void Dead()
+    {
+        Debug.Log("Dead");
+        anim.SetBool("Die", true);
+        health = 0;
+        txtLose.text = "Game Over!!!!";
+        txtLose.color = Color.red;
+    }
 }

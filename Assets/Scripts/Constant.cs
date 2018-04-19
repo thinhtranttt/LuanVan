@@ -1,7 +1,7 @@
 ﻿public static class Constant{
-    public static string AK47 = "AK47";
-    public static string M4A1 = "M4A1";
-    public static string SKORPION = "Skorpion";
+    public static string AK47 = "AK-47";
+    public static string M4A1 = "M4A1 Sopmod";
+    public static string SKORPION = "Skorpion VZ";
     public static string UMP45 = "UMP-45";
 
     public static int AK47_BULLETS = 35;

@@ -6,6 +6,11 @@ public class GunInfo : MonoBehaviour {
     public float range;
     public int maxBullet;
     public int curBullet;
+    public int curBulletReLoad;
     public int dame;
-	
+
+    private void Start()
+    {
+        curBulletReLoad = curBullet;
+    }
 }

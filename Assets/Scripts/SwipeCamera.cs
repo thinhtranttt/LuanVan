@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SwipeCamera : MonoBehaviour {
+public class SwipeCamera : NetworkBehaviour {
 
 	private Touch initTouch = new Touch ();
 	public Camera cam;
@@ -18,16 +19,24 @@ public class SwipeCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (!isLocalPlayer)
+        {
+            cam.enabled = false;
+            Destroy(this);
+            return;
+        }
+        cam = Camera.main;
 		oriRot = cam.transform.eulerAngles;
 		player.transform.eulerAngles = cam.transform.eulerAngles;
 		rotX = oriRot.x;
 		rotY = oriRot.y;
+        
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		foreach (Touch touch in Input.touches) {
-            if (touch.position.x > joystick.position.x + 800 || touch.position.y > joystick.position.y + 800)
+            if (touch.position.x > joystick.position.x + joystick.gameObject.GetComponent<RectTransform>().rect.width || touch.position.y > joystick.position.y + joystick.gameObject.GetComponent<RectTransform>().rect.width)
             {
                 if (touch.phase == TouchPhase.Began)
                 {

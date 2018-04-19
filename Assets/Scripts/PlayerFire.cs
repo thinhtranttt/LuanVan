@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PlayerFire : MonoBehaviour
+public class PlayerFire : NetworkBehaviour
 {
     public int dame;
     public Transform nongNham;
@@ -10,6 +11,8 @@ public class PlayerFire : MonoBehaviour
     public GameObject headGun;
     public GameObject shotHole;
     public VirtualJoyStick move;
+    public Button shootBtn;
+    public Button reloadBtn;
 
     public Transform gunDame;
     public Transform gunWearing;
@@ -139,6 +142,7 @@ public class PlayerFire : MonoBehaviour
 
     void Fire() // ban dan
     {
+        Debug.Log(curBullet);
         if (curBullet <= 0)
         {
 
@@ -202,15 +206,25 @@ public class PlayerFire : MonoBehaviour
     }
 
 
-
-
     // Use this for initialization
     void Start()
     {
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+            return;
+        }
+
+        move = GameObject.FindGameObjectWithTag("JoyStick").GetComponent<VirtualJoyStick>();
+        nongNham = GameObject.FindGameObjectWithTag("Nham").transform;
+        numberBullet = GameObject.FindGameObjectWithTag("NumBulletCanvas").transform;
         anim = gameObject.GetComponent<Animator>();
         textBullet = numberBullet.GetChild(0).GetComponent<Text>();
-        GetDame();
         DisplayBulletText();
+        GetDame();
+
+        GameObject.FindGameObjectWithTag("Shoot").GetComponent<Button>().onClick.AddListener(Fire);
+        GameObject.FindGameObjectWithTag("Reload").GetComponent<Button>().onClick.AddListener(ReloadBullet);
     }
 
     // Update is called once per frame

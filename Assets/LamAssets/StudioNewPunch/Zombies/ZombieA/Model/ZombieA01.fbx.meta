@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: bf9ba3226f219564a9ef3fa029c2d9a6
-timeCreated: 1513927720
-licenseType: Free
+timeCreated: 1498660975
+licenseType: Store
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -184,7 +184,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -645,14 +645,6 @@ ModelImporter:
         modified: 0
     - boneName: PinkyFinger3_R
       humanName: Right Little Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Jaw_M
-      humanName: Jaw
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}

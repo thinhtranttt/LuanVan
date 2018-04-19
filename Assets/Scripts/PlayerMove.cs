@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
-
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove : NetworkBehaviour {
 	public float speed = 6.0F;
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
@@ -23,12 +24,20 @@ public class PlayerMove : MonoBehaviour {
         anim.SetBool(Constant.JUMP, true);
         audioSource.clip = audioJump;
         audioSource.Play();
+        Debug.Log("Jump");
     }
 
     private void Start()
     {
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+            return;
+        }
         anim = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        joystick = GameObject.FindGameObjectWithTag("JoyStick").GetComponent<VirtualJoyStick>();
+        GameObject.FindGameObjectWithTag("Jump").GetComponent<Button>().onClick.AddListener(Jump);
     }
 
     void Update() {

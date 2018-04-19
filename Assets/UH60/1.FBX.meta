@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: 6f13536a42c1ce64792ceb78184bddf0
+timeCreated: 1519825187
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: cabinDoor_L
+    100004: cabinDoor_R
+    100006: Door_L
+    100008: Door_R
+    100010: elevator
+    100012: fuselage
+    100014: main_rotor
+    100016: pilot
+    100018: rear_rotor
+    100020: rear_Tyre
+    100022: Tyre_L
+    100024: tyre_R
+    100026: Window_L1
+    100028: Window_L2
+    100030: window_R1
+    100032: Window_R2
+    400000: //RootNode
+    400002: cabinDoor_L
+    400004: cabinDoor_R
+    400006: Door_L
+    400008: Door_R
+    400010: elevator
+    400012: fuselage
+    400014: main_rotor
+    400016: pilot
+    400018: rear_rotor
+    400020: rear_Tyre
+    400022: Tyre_L
+    400024: tyre_R
+    400026: Window_L1
+    400028: Window_L2
+    400030: window_R1
+    400032: Window_R2
+    2300000: cabinDoor_L
+    2300002: cabinDoor_R
+    2300004: Door_L
+    2300006: Door_R
+    2300008: elevator
+    2300010: fuselage
+    2300012: main_rotor
+    2300014: pilot
+    2300016: rear_rotor
+    2300018: rear_Tyre
+    2300020: Tyre_L
+    2300022: tyre_R
+    2300024: Window_L1
+    2300026: Window_L2
+    2300028: window_R1
+    2300030: Window_R2
+    3300000: cabinDoor_L
+    3300002: cabinDoor_R
+    3300004: Door_L
+    3300006: Door_R
+    3300008: elevator
+    3300010: fuselage
+    3300012: main_rotor
+    3300014: pilot
+    3300016: rear_rotor
+    3300018: rear_Tyre
+    3300020: Tyre_L
+    3300022: tyre_R
+    3300024: Window_L1
+    3300026: Window_L2
+    3300028: window_R1
+    3300030: Window_R2
+    4300000: window_R1
+    4300002: Window_R2
+    4300004: Window_L1
+    4300006: Window_L2
+    4300008: Tyre_L
+    4300010: rear_Tyre
+    4300012: tyre_R
+    4300014: rear_rotor
+    4300016: main_rotor
+    4300018: elevator
+    4300020: Door_L
+    4300022: Door_R
+    4300024: cabinDoor_R
+    4300026: cabinDoor_L
+    4300028: pilot
+    4300030: fuselage
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: fe95ceddbaa0a514ab410da7dca7f372, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: e4d07624c83897f4aa94ba70a9bf4437, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: c101bcb784476ad49abc1ca5f2bde98c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #29'
+    second: {fileID: 2100000, guid: 41c95818ae0e6b84e9de9b13085e0e53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #30'
+    second: {fileID: 2100000, guid: 7a74bc7fe6af23747a02c5ce1e2027a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #32'
+    second: {fileID: 2100000, guid: 27d4b773c2a068d48899e39000deb346, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #33'
+    second: {fileID: 2100000, guid: 3cd1834ac5208b746aefaf168fa4413c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #34'
+    second: {fileID: 2100000, guid: ec04433e0b25ee94f93dc348eeaa10b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #36'
+    second: {fileID: 2100000, guid: f765f30e208ca8d4dbb9c9e4b854d9bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #37'
+    second: {fileID: 2100000, guid: 0191dad37774bd648b2450e81ee1191c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

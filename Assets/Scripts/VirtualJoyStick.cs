@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
+
 public class VirtualJoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
 	private Image bgImg;
@@ -16,6 +17,7 @@ public class VirtualJoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public AudioSource audioSource;
     void Start()	
 	{
+        
 		bgImg = transform.GetComponent<Image> ();
 		jstImg = transform.GetChild (0).GetComponent<Image> ();
 
